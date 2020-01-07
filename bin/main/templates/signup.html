@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head th:replace="common/head">
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
 </head>
 <body>
-<div class="jumbotron">
- <div class="container text-center">
- <form method="post" action="/signup">
- <h2>Join </h2>
- <br></br>
- <div class="form-group">
- <label for="email">Email:</label>
- <input type="text" class="form-control" id="email" name="email">
- </div>
- <div class="form-group">
- <label for="pwd">Password:</label>
- <input type="password" class="form-control" id="pwd" name="pwd">
- </div>
- <div class="form-group">
- <label for="name">Name:</label>
- <input type="text" class="form-control" id="name" name="name">
- </div>
- <button class="btn btn-primary btn-block" id="signup">Sign Up</button>
- </form>
- </div>
- </div>
-<script>
- $("#signup").click(function() {
- $("form").submit();
- return false;
- });
- </script>
+	<!-- Navigation -->
+	<nav th:replace="common/nav"></nav>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<form method="post" action="/signup">
+				<h2>Join</h2>
+				<br></br>
+				<div class="form-group">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" id="email" name="email">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Password:</label> <input type="password"
+						class="form-control" id="pwd" name="pwd">
+				</div>
+				<div class="form-group">
+					<label for="name">Name:</label> <input type="text"
+						class="form-control" id="name" name="name">
+				</div>
+				<button type="button" class="btn btn-warning btn-block" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=8e85f4e39aa0b396c58489918982057a&redirect_uri=http://localhost:8005/kakao&response_type=code'">kakao Login</button>
+    
+    </li>
+    <li th:if="${session.userId} != null">
+        <a href="https://localhost:8005/"></a>
+    </li>
+				<button class="btn btn-primary btn-block" id="signup">Sign
+					Up</button>
+			</form>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer th:replace="common/footer"> </footer>
+
+	<script>
+		$("#signup").click(function() {
+			$("form").submit();
+			return false;
+		});
+	</script>
 </body>
 </html>

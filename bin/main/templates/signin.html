@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
 <head th:replace="common/head">
-<meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-<div class="jumbotron">
- <div class="container text-center">
- <form method="post" action="/signin">
- <h2>Login </h2>
- <br></br>
- <div class="form-group">
- <label for="email">Email:</label>
- <input type="text" class="form-control" id="email" name="email">
- </div>
- <div class="form-group">
- <label for="pwd">Password:</label>
- <input type="password" class="form-control" id="pwd" name="pwd">
- </div>
- <button class="btn btn-primary btn-block" id="signin">Sign in</button>
- </form>
- </div>
- </div>
+	<!-- Navigation -->
+	<nav th:replace="common/nav"></nav>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<form method="post" action="/signin">
+				<h2>Login</h2>
+				<br></br>
+				<div class="form-group">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" id="email" name="email">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Password:</label> <input type="password"
+						class="form-control" id="pwd" name="pwd">
+				</div>
+				<a>
+          </a>                      
+    <button type="button" class="btn btn-warning btn-block" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=8e85f4e39aa0b396c58489918982057a&redirect_uri=http://localhost:8005/kakao&response_type=code'">kakao Login</button>
+     
+    <li th:if="${session.userId} != null">
+        <a href="https://localhost:8005/"></a>
+    </li>
+				<button class="btn btn-primary btn-block" id="signin">Sign
+					in</button>
+			</form>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer th:replace="common/footer"> </footer>
 
- <script>
- $("#signin").click(function() {
- $("form").submit();
- return false;
- });
- </script>
+	<script>
+		$("#signin").click(function() {
+			$("form").submit();
+			return false;
+		});
+	</script>
 </body>
 </html>

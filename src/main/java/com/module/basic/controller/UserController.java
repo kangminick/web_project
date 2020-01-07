@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.module.basic.model.User;
-import com.module.basic.repository.UserRepository;
+import com.module.basic.model.Client;
+import com.module.basic.repository.ClientRepository;
 
 @Controller
 public class UserController {
 	@Autowired
-	UserRepository userRepository;
+	ClientRepository ClientRepository;
 
 	@GetMapping("/signup")
 	public String signup() {
@@ -21,8 +21,8 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public String signupPost(@ModelAttribute User user) {
-		userRepository.save(user);
+	public String signupPost(@ModelAttribute Client user) {
+		ClientRepository.save(user);
 		return "redirect:/";
 	}
 
@@ -35,8 +35,8 @@ public class UserController {
 	}
 
 	@PostMapping("/signin")
-	public String signinPost(@ModelAttribute User user) {
-		User dbUser = userRepository.findByEmailAndPwd(user.getEmail(), user.getPwd());
+	public String signinPost(@ModelAttribute Client user) {
+		Client dbUser = ClientRepository.findByEmailAndPwd(user.getEmail(), user.getPwd());
 		if (dbUser != null) {
 			session.setAttribute("user_info", dbUser);
 		}
